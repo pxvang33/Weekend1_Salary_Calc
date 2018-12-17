@@ -21,16 +21,22 @@ $(document).ready(function(){
 function clickSubmit(){
     console.log('button clicked');
     // declaring variable with employee constructor and swapping properities with input id's to obtian their value
-    let employee = new Employees($('#firstNameIn').val(), $('#lastNameIn').val(), $('#idIn').val(), $('#titleIn').val(), $('#annualSalaryIn').val() );
-    console.log(employee);
-    // pushing employee into array to loop through and then display each index onto the DOM
-    employeesArray.push(employee);
-    $('#empShow').append('<li>' + employee.firstName + employee.lastName + employee.id + employee.title + employee.annualSalary +  '</li>');
+    appendEmployee();
     clearnInputs();
 
 }
 
 function appendEmployee(){
+    let employee = new Employees($('#firstNameIn').val(), $('#lastNameIn').val(), $('#idIn').val(), $('#titleIn').val(), $('#annualSalaryIn').val());
+    console.log(employee);
+    // pushing employee into array to loop through and then display each index onto the DOM
+    employeesArray.push(employee);
+    $('#empShow').append(
+    '<tr>'+ '<td>' + employee.firstName + '</td>'
+    + '<td>' + employee.lastName + '</td>' 
+    + '<td>' + employee.id + '</td>' 
+    +  '<td>' + employee.title + '</td>' 
+    + '<td>' + employee.annualSalary + '</td>' + '</tr>');
 
 } 
 
