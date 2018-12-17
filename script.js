@@ -41,11 +41,10 @@ function appendEmployee(){
     let totalMonthly = 0
     // pushing employee into array to loop through and then display each index onto the DOM
     employeesArray.push(employee);
-    // don't want to empty the whole table how to stop??
+    // don't want to empty the whole table how to stop?? created tbody to solve issue
        $('#tbody' ).empty();
-
+  
     for( let i = 0; i < employeesArray.length; i++){
-        console.log('for loop', employeesArray[i])
     // appending the index properties of array
     $('#tbody').append(
     '<tr>'+ '<td>' + employeesArray[i].firstName + '</td>'
@@ -53,12 +52,19 @@ function appendEmployee(){
     + '<td>' + employeesArray[i].id + '</td>' 
     +  '<td>' + employeesArray[i].title + '</td>' 
     + '<td>' + Number(employeesArray[i].annualSalary).toFixed(2) + '</td>' + '</tr>');
-        
-    // totalMonthly += employee.annualSalary
+    
+    // adding annual salary to total monthy at each employee
+    totalMonthly += Number(employeesArray[i].annualSalary) / 12;
+    $('#salaryTotal').empty();
+    $('#salaryTotal').append('<h2>Total Monthly:' + Number(totalMonthly).toFixed(2) + '</h2>');
+    console.log(totalMonthly);
+        // if( totalMonthly > 20000){
+        //     $('$salaryTotal').css('color', 'red');
+        // }
 
     }
     
-    console.log('total expense', totalMonthly);
+    // console.log('total expense', totalMonthly);
 } 
 
 function clearInputs(){
@@ -71,9 +77,10 @@ function clearInputs(){
 
 }
 
-function updateTotalMonthly(){
+// function updateTotalMonthly(salary){
+//     let totalMonthly = 0
 
-}
+// }
 
 
 // create array of employees
