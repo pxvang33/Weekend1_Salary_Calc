@@ -14,6 +14,13 @@ class Employees {
 $(document).ready(function(){
     console.log('ready');
     $('#clicker').on('click', clickSubmit );
+    // $('#empShow1').append('<tr>' +
+    //     '<th>  First Name  </th>' 
+    //     + '<th>  Last Name  </th>'
+    //    + '<th> ID</th>'
+    //     + '<th>Title</th>'
+    //     + '<th>Annual Salary</th>' +
+    // '</tr>')
     
 
 })
@@ -22,7 +29,8 @@ function clickSubmit(){
     console.log('button clicked');
     // declaring variable with employee constructor and swapping properities with input id's to obtian their value
     appendEmployee();
-    clearnInputs();
+
+    clearInputs();
 
 }
 // function which appends input fields onto the dom, will place function inside of 'clickSubmit' function
@@ -33,24 +41,27 @@ function appendEmployee(){
     let totalMonthly = 0
     // pushing employee into array to loop through and then display each index onto the DOM
     employeesArray.push(employee);
-    $('#firstRow').empty();
+    // don't want to empty the whole table how to stop??
+       $('#firstRow').empty();
 
-    for( person of employeesArray){
+    for( let i = 0; i < employeesArray.length; i++){
+        console.log('for loop', employeesArray[i])
+
     $('#firstRow').append(
-    '<tr>'+ '<td>' + employee.firstName + '</td>'
-    + '<td>' + employee.lastName + '</td>' 
-    + '<td>' + employee.id + '</td>' 
-    +  '<td>' + employee.title + '</td>' 
-    + '<td>' + Number(employee.annualSalary).toFixed(2) + '</td>' + '</tr>');
+    '<tr>'+ '<td>' + employeesArray[i].firstName + '</td>'
+    + '<td>' + employeesArray[i].lastName + '</td>' 
+    + '<td>' + employeesArray[i].id + '</td>' 
+    +  '<td>' + employeesArray[i].title + '</td>' 
+    + '<td>' + Number(employeesArray[i].annualSalary).toFixed(2) + '</td>' + '</tr>');
         
-    totalMonthly += employee.annualSalary
+    // totalMonthly += employee.annualSalary
 
     }
     
     console.log('total expense', totalMonthly);
 } 
 
-function clearnInputs(){
+function clearInputs(){
     // created function to clear input fields after clicking button
     $('#firstNameIn').val('');
     $('#lastNameIn').val('');
