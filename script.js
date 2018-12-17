@@ -19,16 +19,30 @@ $(document).ready(function(){
 })
 
 function clickSubmit(){
-    console.log('works'); // button works when clicked
+    console.log('button clicked');
     // declaring variable with employee constructor and swapping properities with input id's to obtian their value
-    let employee = new Employees( $('#firstNameIn').val());
+    let employee = new Employees($('#firstNameIn').val(), $('#lastNameIn').val(), $('#idIn').val(), $('#titleIn').val(), $('#annualSalaryIn').val() );
     console.log(employee);
-    // let employee = new Employees($('#firstNameIn').val(), $('#lastNameIn').val(), $('#idIn').val(), $('#titleIn').val(), $('#annualSalaryIn').val() );
     // pushing employee into array to loop through and then display each index onto the DOM
     employeesArray.push(employee);
-    $('#empShow').append('<li>' + employee.firstName + '</li>');
+    $('#empShow').append('<li>' + employee.firstName + employee.lastName + employee.id + employee.title + employee.annualSalary +  '</li>');
+    clearnInputs();
 
 }
+
+function appendEmployee(){
+
+} 
+
+function clearnInputs(){
+    $('#firstNameIn').val('');
+    $('#lastNameIn').val('');
+    $('#idIn').val('');
+    $('#titleIn').val('');
+    $('#annualSalaryIn').val('');
+
+}
+
 
 // create array of employees
 //  push employees to array, go through array and append employees to the dom through a loop,
