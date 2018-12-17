@@ -42,12 +42,12 @@ function appendEmployee(){
     // pushing employee into array to loop through and then display each index onto the DOM
     employeesArray.push(employee);
     // don't want to empty the whole table how to stop??
-       $('#firstRow').empty();
+       $('#tbody' ).empty();
 
     for( let i = 0; i < employeesArray.length; i++){
         console.log('for loop', employeesArray[i])
-
-    $('#firstRow').append(
+    // appending the index properties of array
+    $('#tbody').append(
     '<tr>'+ '<td>' + employeesArray[i].firstName + '</td>'
     + '<td>' + employeesArray[i].lastName + '</td>' 
     + '<td>' + employeesArray[i].id + '</td>' 
